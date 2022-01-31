@@ -37,10 +37,6 @@ dino_data %>%
 
 ### Exercise 3
 
-
-
-
-
 ```{r plot-star}
 star_data <- datasaurus_dozen %>%
   filter(dataset == "star")
