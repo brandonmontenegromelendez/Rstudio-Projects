@@ -2,10 +2,11 @@
 title: "Hello R"
 author: "Brandon Montenegro Melendez"
 date: "Data 2401"
-output: html_document
+output: 
+  html_document: 
+    highlight: tango
+    theme: yeti
 ---
-
-MAKE SURE YOU READ AND FOLLOW **ALL** INSTRUCTIONS ON THE INSTRUCTION DOCUMENT. 
 
 ### Load packages 1
 
@@ -17,7 +18,7 @@ library(datasauRus)
 
 ### Exercise 1
 
-(The datasaurus_dozen file has 1846 rows and 3 columns. The variables included in the dataframe are dataset, x, and y. )
+The datasaurus_dozen file has 1846 rows and 3 columns. The variables included in the dataframe are dataset, x, and y. 
 
 ### Exercise 2
 
@@ -28,7 +29,7 @@ ggplot(data = dino_data, mapping = aes(x = x, y = y)) +
   geom_point()
 ```
 
-Plot of the dino dataset from the datasaurus Dozen.
+Plot of the dino dataset from the Datasaurus Dozen.
 
 ```{r cor-dino}
 dino_data %>%
@@ -46,7 +47,7 @@ ggplot(data = star_data, mapping = aes(x = x, y = y)) +
 
 ```
 
-Plot of the star dataset from the datasaurus Dozen. 
+Plot of the star dataset from the Datasaurus Dozen. 
  
 ```{r cor-star}
 star_data %>%
@@ -65,7 +66,7 @@ ggplot(data = circle_data, mapping = aes(x = x, y = y)) +
 
 ```
 
-Plot of the circle dataset from the datasaurus Dozen.
+Plot of the circle dataset from the Datasaurus Dozen.
 
 ```{r cor-circle}
 circle_data %>%
@@ -77,4 +78,23 @@ Correlation coefficient tells us there is no correlation between the x and the y
 
 ### Exercise 5
 
-(Add code and narrative as needed. To add R chunks either type out the backticks, curly braces, and the letter `r` or use the Insert chunk button above, with the green +C.)
+```{r plot-all}
+ggplot(datasaurus_dozen, aes(x = x, y = y, color = dataset))+
+geom_point()+
+facet_wrap(~ dataset, ncol = 3) + # facet the dataset variable, in 3 cols
+theme(legend.position = "none")
+
+
+```
+
+Plots of all datasets from the Datasaurus Dozen.
+
+```{r cor-all datasets}
+datasaurus_dozen %>%
+group_by(dataset) %>%
+summarize(r = cor(x, y)) %>%
+print(13)
+
+```
+
+Correlation coefficient tells us there is no correlation between the x and the y variables in any of these datasets.
