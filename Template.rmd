@@ -28,12 +28,13 @@ ggplot(data = dino_data, mapping = aes(x = x, y = y)) +
   geom_point()
 ```
 
-
+Plot of the dino dataset from the datasaurus Dozen.
 
 ```{r cor-dino}
 dino_data %>%
   summarize(r = cor(x, y))
 ```
+Correlation coefficient tells us there is no correlation between the x and the y variables. 
 
 ### Exercise 3
 
@@ -56,17 +57,23 @@ Correlation coefficient tells us there is no correlation between the x and the y
 
 ### Exercise 4
 
-(Add code and narrative as needed. Note that two R chunks are given but they are not labeled. Use the convention from above to name them appropriately.)
+```{r plot-circle}
+circle_data <- datasaurus_dozen %>%
+  filter(dataset == "circle")
+ggplot(data = circle_data, mapping = aes(x = x, y = y)) +
+  geom_point()
 
-```{r}
+```
 
+Plot of the circle dataset from the datasaurus Dozen.
+
+```{r cor-circle}
+circle_data %>%
+  summarize(r = cor(x, y))
 
 ```
 
-```{r}
-
-
-```
+Correlation coefficient tells us there is no correlation between the x and the y variables. 
 
 ### Exercise 5
 
